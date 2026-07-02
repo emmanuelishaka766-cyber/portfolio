@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mesh-background"></div>
+    <div class="code-background"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-container">
+                <div class="blue-brand-logo">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <path d="M 74,22 
+                                 L 38,22 
+                                 A 28,28 0 0,0 38,78 
+                                 L 74,78 
+                                 M 34,50 
+                                 L 66,50" 
+                              stroke="#00d2ff" 
+                              stroke-width="14" 
+                              stroke-linecap="round" 
+                              stroke-linejoin="round" 
+                              fill="none" />
+                    </svg>
+                </div>
+                <span class="logo-text">CodeDev</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about-popup" class="open-popup-btn">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="about-popup" class="popup-overlay">
+        <div class="popup-content card">
+            <a href="#" class="close-popup-btn">&times;</a>
+            <h2>About Me</h2>
+            <p>I am a passionate developer focused on creating fast, accessible, and responsive web experiences. I love breaking down complex problems into simple, beautiful code.</p>
+            <br>
+            <p>Driven by the intersection of design and functionality, I build modern web structures with clean UI styling, high-performance optimization, and fluid user experiences.</p>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Building the Future with <span id="typewriter" class="highlight"></span></h1>
+            <p>Full-stack developer specializing in clean code, elegant design, and modern web technologies.</p>
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+        </div>
+    </header>
+
+    <main class="container bento-grid" id="projects">
+
+        <article class="card project-card reveal">
+            <a href="https://github.com" target="_blank" class="project-link-wrapper">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="Web Application Dashboard">
+                </div>
+                <div class="project-info">
+                    <h3>Web Application Dashboard</h3>
+                    <p>A responsive dashboard featuring live data analytics, built using modern JavaScript and semantic HTML.</p>
+                    <div class="project-tags">
+                        <span>JavaScript</span>
+                        <span>CSS Grid</span>
+                    </div>
+                    <span class="btn btn-secondary simulated-btn">View Source Code</span>
+                </div>
+            </a>
+        </article>
+
+        <article class="card project-card reveal">
+            <a href="https://github.com" target="_blank" class="project-link-wrapper">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=800&q=80" alt="Automation Script Engine">
+                </div>
+                <div class="project-info">
+                    <h3>Automation Script Engine</h3>
+                    <p>A backend optimization script written in Python to parse local system data streams instantly.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>API Integration</span>
+                    </div>
+                    <span class="btn btn-secondary simulated-btn">View Source Code</span>
+                </div>
+            </a>
+        </article>
+
+        <section id="skills" class="card bento-skills reveal">
+            <h2>Technical Stack</h2>
+            <div class="skills-grid">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-tag">HTML5 / CSS3</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="skill-tag">JavaScript (ES6+)</a>
+                <a href="https://www.python.org" target="_blank" class="skill-tag">Python</a>
+                <a href="https://github.com" target="_blank" class="skill-tag">Git / GitHub</a>
+                <a href="https://web.dev/responsive-web-design-basics/" target="_blank" class="skill-tag">Responsive Design</a>
+                <a href="https://www.linux.org" target="_blank" class="skill-tag">Command Line</a>
+            </div>
+        </section>
+
+        <section id="contact" class="card bento-contact reveal">
+            <div class="contact-layout">
+                <div class="contact-text">
+                    <h2>Let's Collaborate</h2>
+                    <p>Have an interesting project or want to chat? Drop your details here, and the form will directly open an email draft to me instantly!</p>
+                </div>
+                
+                <form action="mailto:your-email@gmail.com" method="POST" enctype="text/plain" class="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                    <input type="email" name="email" placeholder="Your Email Address" required class="form-input">
+                    <textarea name="message" placeholder="Type your message here..." rows="4" required class="form-input form-textarea"></textarea>
+                    <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Developer Portfolio. Built from scratch.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
