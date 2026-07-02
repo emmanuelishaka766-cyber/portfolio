@@ -120,6 +120,33 @@
     <button type="submit" class="btn btn-primary form-submit">Send Message</button>
 </form>
 
+<script>
+document.getElementById('my-contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Stop the page from reloading
+    
+    const data = {
+        name: document.getElementById('form-name').value,
+        email: document.getElementById('form-email').value,
+        message: document.getElementById('form-message').value
+    };
+
+    // Send the data directly to your serverless api route
+    const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        alert('Message sent safely and securely!');
+        document.getElementById('my-contact-form').reset(); // Clear the form
+    } else {
+        alert('Something went wrong. Please try again.');
+    }
+});
+</script>
+
+
             </div>
         </section>
 
