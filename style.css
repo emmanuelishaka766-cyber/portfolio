@@ -1,4 +1,4 @@
-/* Modern, Clean Minimalist Styles */
+/* Dark, Tech-Forward Theme */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #0b0f19;
@@ -7,41 +7,58 @@ body {
     padding: 40px 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 800px;
+/* Bento Grid Setup */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 900px;
     width: 100%;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-h1 {
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-p {
-    color: #9ca3af;
-}
-
-/* Bento Grid Contact Section */
-.contact-card {
+.bento-item {
     background-color: #111827;
     border: 1px solid #1f2937;
     border-radius: 16px;
     padding: 30px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.contact-card h2 {
+/* Specific Block Layouts */
+.profile-card {
+    grid-column: span 2;
+    border-left: 4px solid #38bdf8; /* Neon blue accent line */
+}
+
+.profile-card h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.about-card h3, .contact-card h3 {
     margin-top: 0;
-    color: #38bdf8; /* Neon blue accent */
+    color: #38bdf8;
 }
 
+/* Neon Typewriter Text Styling */
+.typewriter-text {
+    font-family: 'Courier New', Courier, monospace;
+    color: #38bdf8;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-right: 2px solid #38bdf8;
+    white-space: nowrap;
+    overflow: hidden;
+    width: fit-content;
+}
+
+/* Contact Form Elements */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -54,13 +71,14 @@ p {
     color: #ffffff;
     padding: 12px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-input:focus, .form-textarea:focus {
     border-color: #38bdf8;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
 }
 
 .btn-primary {
@@ -72,11 +90,24 @@ p {
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
 .btn-primary:hover {
     background-color: #0ea5e9;
 }
 
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 650px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-card {
+        grid-column: span 1;
+    }
+}
 
