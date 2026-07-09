@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Portfolio Contact <onboarding@resend.dev>',
-        to: 'your-actual-email@gmail.com', // Replace with your real Gmail address
+        to: 'your-actual-email@gmail.com', // ⚠️ Put your real email here!
         subject: `New Portfolio Message from ${name}`,
         html: `<p><strong>Name:</strong> ${name}</p>
                <p><strong>Email:</strong> ${email}</p>
@@ -36,4 +36,5 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
 
