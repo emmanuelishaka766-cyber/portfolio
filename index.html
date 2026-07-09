@@ -3,35 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio</title>
+    <title>Emora | Developer Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="bento-grid">
-        <div class="bento-item profile-card">
-            <h1>Hi, I'm a Developer</h1>
-            <p class="typewriter-text" id="typewriter"></p>
-        </div>
+    <main class="portfolio-container">
+        <section class="bento-card hero-card">
+            <div class="badge">Available for Work</div>
+            
+            <h1 class="brand-title"><span class="spotify-e">E</span>mora</h1>
+            
+            <h2 class="hero-title">Crafting digital experiences with <span class="text-glow">precision code</span>.</h2>
+            <p class="typewriter-container">
+                <span class="terminal-prompt">$</span> <span id="typewriter" class="typewriter-text"></span>
+            </p>
+        </section>
 
-        <div class="bento-item about-card">
-            <h3>About Me</h3>
-            <p>Building clean, secure, and modern web applications with frontend and backend logic.</p>
-        </div>
+        <section class="bento-card about-card">
+            <div class="card-header">
+                <span class="card-icon">✦</span>
+                <h2>About</h2>
+            </div>
+            <p class="card-text">Specializing in building ultra-secure, highly performant web architectures. Focused on clean code structures, seamless user interfaces, and robust backend integrations.</p>
+            <div class="tech-stack">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Serverless APIs</span>
+                <span class="tech-tag">Git & GitHub</span>
+            </div>
+        </section>
 
-        <div class="bento-item contact-card">
-            <h3>Get In Touch</h3>
+        <section class="bento-card projects-card">
+            <div class="card-header">
+                <span class="card-icon">🛠️</span>
+                <h2>Featured Project</h2>
+            </div>
+            <div class="project-preview">
+                <div class="project-info">
+                    <h3>Serverless Messaging System</h3>
+                    <p>A secure contact handler utilizing independent API endpoints to process user data without external dependencies.</p>
+                </div>
+                <div class="project-status">Active</div>
+            </div>
+        </section>
+
+        <section class="bento-card contact-card">
+            <div class="card-header">
+                <span class="card-icon">✉️</span>
+                <h2>Secure Channel</h2>
+            </div>
+            <p class="card-subtitle">Send an encrypted message directly to my console.</p>
+            
             <form id="my-contact-form" class="contact-form">
-                <input type="text" id="form-name" placeholder="Your Name" required class="form-input">
-                <input type="email" id="form-email" placeholder="Your Email Address" required class="form-input">
-                <textarea id="form-message" placeholder="Type your message here..." rows="4" required class="form-input form-textarea"></textarea>
-                <button type="submit" class="btn-primary">Send Message</button>
+                <div class="input-group">
+                    <input type="text" id="form-name" placeholder=" " required class="form-input">
+                    <label class="form-label">Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="form-email" placeholder=" " required class="form-input">
+                    <label class="form-label">Email Address</label>
+                </div>
+                <div class="input-group">
+                    <textarea id="form-message" placeholder=" " rows="4" required class="form-input form-textarea"></textarea>
+                    <label class="form-label">Message</label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Transmit Message</span>
+                    <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.33334 8H12.6667M12.6667 8L8 3.33334M12.6667 8L8 12.6667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
             </form>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
 </html>
-
 
