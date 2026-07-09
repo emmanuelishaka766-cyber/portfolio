@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Portfolio Contact <onboarding@resend.dev>',
-        to: 'your-actual-email@gmail.com', // ⚠️ Put your real email here!
+        to: 'your-actual-email@gmail.com', // ⚠️ Update this with your real Gmail address
         subject: `New Portfolio Message from ${name}`,
         html: `<p><strong>Name:</strong> ${name}</p>
                <p><strong>Email:</strong> ${email}</p>
