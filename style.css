@@ -1,11 +1,11 @@
 /* --- Global Reset & Variables --- */
 :root {
-    --bg-dark: #030712;
-    --card-bg: rgba(17, 24, 39, 0.7);
-    --border-color: rgba(255, 255, 255, 0.08);
+    --bg-dark: #02040a;
+    --card-bg: rgba(10, 15, 30, 0.7);
+    --border-color: rgba(255, 255, 255, 0.06);
     --border-hover: rgba(56, 189, 248, 0.4);
     --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
+    --text-secondary: #8b949e;
     --accent: #38bdf8;
     --accent-glow: rgba(56, 189, 248, 0.15);
     --spotify-green: #1ED760;
@@ -25,29 +25,27 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* --- Interactive Matrix/Grid Background --- */
+.bg-grid-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 40%);
+        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 20s linear infinite;
 }
 
-/* --- Spotify-Style Brand Heading --- */
-.brand-title {
-    font-size: 3.2rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 14px 0;
-    letter-spacing: -0.04em;
-    display: flex;
-    align-items: center;
-}
-
-.spotify-e {
-    color: var(--spotify-green);
-    display: inline-block;
-    transform: rotate(-10deg); /* Slanted upward wave look */
-    font-weight: 800;
-    padding-right: 2px;
-    text-shadow: 0 0 20px rgba(30, 215, 96, 0.5);
+@keyframes gridMove {
+    from { background-position: 0 0; }
+    to { background-position: 40px 40px; }
 }
 
 /* --- Bento Grid Layout --- */
@@ -64,15 +62,18 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 32px;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    cursor: default;
 }
+
+.projects-card { cursor: pointer; }
 
 .bento-card:hover {
     border-color: var(--border-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 40px rgba(56, 189, 248, 0.05);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(56, 189, 248, 0.08);
 }
 
 .hero-card { grid-column: span 6; }
@@ -80,81 +81,56 @@ body {
 .projects-card { grid-column: span 3; }
 .contact-card { grid-column: span 6; }
 
-/* --- Component Styles --- */
-.badge {
-    background: rgba(16, 185, 129, 0.1);
-    color: #10b981;
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    width: fit-content;
-    margin-bottom: 20px;
-    border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-.hero-title {
-    font-size: 2.2rem;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: 0 0 16px 0;
-    letter-spacing: -0.02em;
+/* --- Spotify Title --- */
+.brand-title {
+    font-size: 3.2rem;
+    font-weight: 700;
     color: #ffffff;
-}
-
-.text-glow {
-    color: var(--accent);
-    text-shadow: 0 0 20px var(--accent-glow);
-}
-
-.typewriter-container {
-    font-family: var(--font-mono);
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    margin: 0;
-}
-
-.terminal-prompt { color: var(--accent); margin-right: 8px; }
-
-.typewriter-text {
-    border-right: 2px solid var(--accent);
-    animation: blink 0.75s step-end infinite;
-}
-
-.card-header {
+    margin: 0 0 14px 0;
+    letter-spacing: -0.04em;
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
 }
 
-.card-icon { font-size: 1.25rem; }
-
-.card-header h2 {
-    margin: 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #ffffff;
+.spotify-e {
+    color: var(--spotify-green);
+    display: inline-block;
+    transform: rotate(-10deg);
+    font-weight: 800;
+    padding-right: 2px;
+    text-shadow: 0 0 20px rgba(30, 215, 96, 0.5);
 }
 
-.card-text {
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0 0 24px 0;
-    font-size: 0.95rem;
-}
+.hero-title { font-size: 2.2rem; font-weight: 600; line-height: 1.3; margin: 0 0 16px 0; color: #ffffff; }
+.text-glow { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+.typewriter-container { font-family: var(--font-mono); font-size: 1.05rem; color: var(--text-secondary); margin: 0; }
+.terminal-prompt { color: var(--accent); margin-right: 8px; }
+.typewriter-text { border-right: 2px solid var(--accent); animation: blink 0.75s step-end infinite; }
 
+.card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.card-header h2 { margin: 0; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+.card-text { color: var(--text-secondary); line-height: 1.6; margin: 0 0 24px 0; font-size: 0.95rem; }
 .card-subtitle { color: var(--text-secondary); margin: 0 0 32px 0; font-size: 0.95rem; }
 
-/* --- Tags --- */
-.tech-stack { display: flex; flex-wrap: wrap; gap: 8px; }
+/* --- Interactive Tech Tags --- */
+.tech-stack { display: flex; flex-wrap: wrap; gap: 10px; }
 .tech-tag {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
     color: var(--text-primary);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.05);
 }
 
 /* --- Project Block --- */
@@ -162,28 +138,21 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 }
 .project-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: #ffffff; }
 .project-info p { margin: 0; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
-.project-status {
-    font-size: 0.75rem;
-    background: var(--border-color);
-    padding: 4px 8px;
-    border-radius: 6px;
-    color: var(--text-secondary);
-}
+.project-status { font-size: 0.8rem; font-weight: 500; color: var(--accent); }
 
-/* --- Floating Label Inputs --- */
+/* --- Contact Inputs & Labels --- */
 .contact-form { display: flex; flex-direction: column; gap: 24px; }
 .input-group { position: relative; width: 100%; }
-
 .form-input {
     width: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 16px;
@@ -194,31 +163,20 @@ body {
     outline: none;
     transition: all 0.3s ease;
 }
-
 .form-textarea { resize: vertical; min-height: 100px; }
-.form-input:focus { border-color: var(--accent); background: rgba(0, 0, 0, 0.4); }
-.form-label {
-    position: absolute;
-    left: 16px;
-    top: 16px;
-    color: var(--text-secondary);
-    pointer-events: none;
-    transition: all 0.2s ease;
-    font-size: 1rem;
-}
+.form-input:focus { border-color: var(--accent); background: rgba(0, 0, 0, 0.5); }
+.form-label { position: absolute; left: 16px; top: 16px; color: var(--text-secondary); pointer-events: none; transition: all 0.2s ease; font-size: 1rem; }
 
 .form-input:focus ~ .form-label,
 .form-input:not(:placeholder-shown) ~ .form-label {
     top: -10px;
     left: 12px;
     font-size: 0.8rem;
-    background: #030712;
+    background: #02040a;
     padding: 2px 8px;
     color: var(--accent);
-    border-radius: 4px;
 }
 
-/* --- Premium Buttons --- */
 .submit-btn {
     background: #ffffff;
     color: var(--bg-dark);
@@ -226,32 +184,46 @@ body {
     padding: 16px 32px;
     border-radius: 14px;
     font-weight: 600;
-    font-size: 1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     width: fit-content;
-    font-family: var(--font-sans);
     transition: all 0.3s ease;
 }
+.submit-btn:hover { background: var(--accent); box-shadow: 0 0 24px rgba(56, 189, 248, 0.4); }
 
-.submit-btn:hover {
-    background: var(--accent);
-    box-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+/* --- Professional Side Drawer Overlay UI --- */
+.doc-drawer {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 400px;
+    height: 100vh;
+    background: #0d1117;
+    border-left: 1px solid var(--border-color);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    z-index: 100;
+    padding: 40px;
+    box-sizing: border-box;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
 }
+.doc-drawer.active { right: 0; }
+.drawer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 24px; }
+.drawer-header h2 { margin: 0; color: #ffffff; font-size: 1.5rem; }
+.close-btn { background: none; border: none; color: var(--text-secondary); font-size: 2rem; cursor: pointer; }
+.close-btn:hover { color: #ffffff; }
+.drawer-body { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; }
+.drawer-body h4 { color: #ffffff; margin: 24px 0 8px 0; }
+.drawer-body a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.drawer-body a:hover { text-decoration: underline; }
 
-.btn-arrow { transition: transform 0.3s ease; }
-.submit-btn:hover .btn-arrow { transform: translateX(4px); }
+.drawer-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 99; display: none; }
+.drawer-overlay.active { display: block; }
 
-/* --- Animations --- */
+.badge { background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; width: fit-content; margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.2); }
 @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
-
-@media (max-width: 768px) {
-    .portfolio-container { grid-template-columns: 1fr; gap: 16px; }
-    .hero-card, .about-card, .projects-card, .contact-card { grid-column: span 1; }
-    .brand-title { font-size: 2.5rem; }
-}
+@media (max-width: 768px) { .portfolio-container { grid-template-columns: 1fr; gap: 16px; } .hero-card, .about-card, .projects-card, .contact-card { grid-column: span 1; } .doc-drawer { width: 100%; right: -100%; } }
 
 
