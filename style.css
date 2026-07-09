@@ -1,229 +1,269 @@
-/* --- Global Reset & Variables --- */
+/* --- Root Core Design Configurations --- */
 :root {
-    --bg-dark: #02040a;
-    --card-bg: rgba(10, 15, 30, 0.7);
-    --border-color: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(56, 189, 248, 0.4);
-    --text-primary: #f3f4f6;
-    --text-secondary: #8b949e;
-    --accent: #38bdf8;
-    --accent-glow: rgba(56, 189, 248, 0.15);
-    --spotify-green: #1ED760;
+    --bg-main: #060c13;
+    --card-bg: rgba(7, 16, 27, 0.65);
+    --neon-cyan: #00f0ff;
+    --neon-green: #39ff14;
+    --border-glow: rgba(0, 240, 255, 0.25);
+    --border-hover-glow: rgba(0, 240, 255, 0.6);
+    --text-primary: #e2e8f0;
+    --text-muted: #64748b;
     --font-sans: 'Plus Jakarta Sans', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     margin: 0;
-    padding: 60px 20px;
+    padding: 40px 20px;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     box-sizing: border-box;
     overflow-x: hidden;
-    position: relative;
 }
 
-/* --- Interactive Matrix/Grid Background --- */
-.bg-grid-animation {
+/* --- Matrix Floating Background Environment --- */
+.code-stream-bg {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     z-index: -1;
-    background-image: 
-        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: gridMove 20s linear infinite;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.15;
 }
 
-@keyframes gridMove {
-    from { background-position: 0 0; }
-    to { background-position: 40px 40px; }
+.bg-snippet {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    white-space: pre;
+    line-height: 1.4;
 }
 
-/* --- Bento Grid Layout --- */
+/* Absolute scattered layout parameters directly mirroring layout image */
+.snippet-1 { top: 5%; left: 2%; color: #39ff14; }
+.snippet-2 { top: 12%; left: 20%; }
+.snippet-3 { top: 40%; left: 5%; }
+.snippet-4 { bottom: 3%; left: 28%; color: #39ff14; }
+.snippet-5 { top: 2%; right: 25%; }
+.snippet-6 { bottom: 15%; right: 10%; }
+
+/* --- Work Grid Frame Matrix --- */
 .portfolio-container {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 24px;
-    max-width: 1100px;
+    gap: 20px;
+    max-width: 1050px;
     width: 100%;
+    z-index: 2;
 }
 
 .bento-card {
     background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
-    padding: 32px;
-    backdrop-filter: blur(20px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-    cursor: default;
+    border: 1.5px solid var(--border-glow);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.03), 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
-.projects-card { cursor: pointer; }
 
 .bento-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(56, 189, 248, 0.08);
+    border-color: var(--border-hover-glow);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), inset 0 0 10px rgba(0, 240, 255, 0.05);
+    transform: translateY(-2px);
 }
 
+/* Block Frame Span Allotment */
 .hero-card { grid-column: span 6; }
-.about-card { grid-column: span 3; }
-.projects-card { grid-column: span 3; }
-.contact-card { grid-column: span 6; }
+.messaging-card { grid-column: span 6; }
+.skills-card { grid-column: span 3; }
+.secure-channel-card { grid-column: span 3; }
 
-/* --- Spotify Title --- */
-.brand-title {
-    font-size: 3.2rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 14px 0;
-    letter-spacing: -0.04em;
+/* --- Premium Custom Wave Brand Header --- */
+.logo-area {
     display: flex;
     align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
-.spotify-e {
-    color: var(--spotify-green);
-    display: inline-block;
-    transform: rotate(-10deg);
-    font-weight: 800;
-    padding-right: 2px;
-    text-shadow: 0 0 20px rgba(30, 215, 96, 0.5);
-}
-
-.hero-title { font-size: 2.2rem; font-weight: 600; line-height: 1.3; margin: 0 0 16px 0; color: #ffffff; }
-.text-glow { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
-.typewriter-container { font-family: var(--font-mono); font-size: 1.05rem; color: var(--text-secondary); margin: 0; }
-.terminal-prompt { color: var(--accent); margin-right: 8px; }
-.typewriter-text { border-right: 2px solid var(--accent); animation: blink 0.75s step-end infinite; }
-
-.card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.card-header h2 { margin: 0; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
-.card-text { color: var(--text-secondary); line-height: 1.6; margin: 0 0 24px 0; font-size: 0.95rem; }
-.card-subtitle { color: var(--text-secondary); margin: 0 0 32px 0; font-size: 0.95rem; }
-
-/* --- Interactive Tech Tags --- */
-.tech-stack { display: flex; flex-wrap: wrap; gap: 10px; }
-.tech-tag {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-color);
-    padding: 8px 16px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    cursor: pointer;
+.brand-name {
     font-family: var(--font-sans);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Custom Spotify Wave Derivative Architecture */
+.matrix-wave {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transform: rotate(-12deg) translateY(-2px);
+}
+
+.matrix-wave span {
+    display: block;
+    height: 4px;
+    background: var(--neon-green);
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--neon-green);
+}
+.matrix-wave span:nth-child(1) { width: 18px; transform: translateX(2px); }
+.matrix-wave span:nth-child(2) { width: 26px; }
+.matrix-wave span:nth-child(3) { width: 22px; transform: translateX(4px); }
+
+.hero-title {
+    font-family: var(--font-sans);
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    font-weight: 600;
+}
+
+.dim-text { color: var(--text-muted); font-size: 1.6rem; block-size: auto; }
+
+.terminal-container {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin: 0;
+}
+.prompt { color: var(--neon-green); margin-right: 8px; font-weight: bold; }
+.typewriter { border-right: 2px solid var(--neon-cyan); animation: cursorBlink 0.8s step-end infinite; }
+
+/* --- Inner Core Section Blocks styling --- */
+h3 { margin: 0 0 12px 0; font-family: var(--font-sans); font-size: 1.35rem; font-weight: 600; color: #ffffff; }
+.card-desc { color: var(--text-muted); font-size: 0.95rem; margin: 0 0 20px 0; line-height: 1.5; }
+.section-tag { color: var(--neon-cyan); font-size: 0.85rem; margin: 0 0 16px 0; }
+
+.action-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+.btn {
+    font-family: var(--font-mono);
+    background: transparent;
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
     transition: all 0.2s ease;
 }
+.btn:hover { background: rgba(0, 240, 255, 0.1); box-shadow: 0 0 12px var(--border-glow); }
 
-.tech-tag:hover {
-    background: rgba(56, 189, 248, 0.1);
-    border-color: var(--accent);
-    color: var(--accent);
+.operation-badge {
+    margin-left: auto;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    color: var(--neon-cyan);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* --- Micro Interactive Skill Modules --- */
+.tech-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.tech-pill {
+    background: rgba(0, 240, 255, 0.03);
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.05);
+    transition: all 0.2s ease;
+}
+.tech-pill:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-main);
+    box-shadow: 0 0 15px var(--neon-cyan);
     transform: scale(1.05);
 }
 
-/* --- Project Block --- */
-.project-preview {
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.project-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: #ffffff; }
-.project-info p { margin: 0; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
-.project-status { font-size: 0.8rem; font-weight: 500; color: var(--accent); }
-
-/* --- Contact Inputs & Labels --- */
-.contact-form { display: flex; flex-direction: column; gap: 24px; }
-.input-group { position: relative; width: 100%; }
-.form-input {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 16px;
-    box-sizing: border-box;
+/* --- Grid Form Controls --- */
+.secure-form { display: flex; flex-direction: column; gap: 12px; }
+.matrix-input {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 12px;
     color: #ffffff;
-    font-size: 1rem;
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
     outline: none;
-    transition: all 0.3s ease;
 }
-.form-textarea { resize: vertical; min-height: 100px; }
-.form-input:focus { border-color: var(--accent); background: rgba(0, 0, 0, 0.5); }
-.form-label { position: absolute; left: 16px; top: 16px; color: var(--text-secondary); pointer-events: none; transition: all 0.2s ease; font-size: 1rem; }
+.matrix-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 8px rgba(0, 240, 255, 0.2); }
+.matrix-textarea { resize: none; }
 
-.form-input:focus ~ .form-label,
-.form-input:not(:placeholder-shown) ~ .form-label {
-    top: -10px;
-    left: 12px;
-    font-size: 0.8rem;
-    background: #02040a;
-    padding: 2px 8px;
-    color: var(--accent);
-}
-
-.submit-btn {
-    background: #ffffff;
-    color: var(--bg-dark);
-    border: none;
-    padding: 16px 32px;
-    border-radius: 14px;
-    font-weight: 600;
+.transmit-btn {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 14px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: fit-content;
-    transition: all 0.3s ease;
+    font-weight: bold;
+    transition: all 0.2s ease;
 }
-.submit-btn:hover { background: var(--accent); box-shadow: 0 0 24px rgba(56, 189, 248, 0.4); }
+.transmit-btn:hover { background: rgba(0, 240, 255, 0.08); box-shadow: 0 0 15px var(--border-glow); }
 
-/* --- Professional Side Drawer Overlay UI --- */
+/* --- Side Documentation Deck Window --- */
 .doc-drawer {
     position: fixed;
     top: 0;
-    right: -450px;
-    width: 400px;
+    right: -460px;
+    width: 440px;
     height: 100vh;
-    background: #0d1117;
-    border-left: 1px solid var(--border-color);
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    background: #070d14;
+    border-left: 2px solid var(--neon-cyan);
+    box-shadow: -15px 0 40px rgba(0,0,0,0.8);
     z-index: 100;
-    padding: 40px;
+    padding: 30px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow-y: auto;
 }
 .doc-drawer.active { right: 0; }
-.drawer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 24px; }
-.drawer-header h2 { margin: 0; color: #ffffff; font-size: 1.5rem; }
-.close-btn { background: none; border: none; color: var(--text-secondary); font-size: 2rem; cursor: pointer; }
-.close-btn:hover { color: #ffffff; }
-.drawer-body { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; }
-.drawer-body h4 { color: #ffffff; margin: 24px 0 8px 0; }
-.drawer-body a { color: var(--accent); text-decoration: none; font-weight: 500; }
-.drawer-body a:hover { text-decoration: underline; }
 
-.drawer-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 99; display: none; }
-.drawer-overlay.active { display: block; }
+.drawer-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 16px; }
+.drawer-meta { font-size: 0.8rem; color: var(--text-muted); }
+#drawer-title { margin: 4px 0 0 0; font-family: var(--font-sans); color: #ffffff; font-size: 1.4rem; font-weight: 700; }
+.close-icon { background: none; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; line-height: 1; }
+.close-icon:hover { color: var(--neon-cyan); }
 
-.badge { background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; width: fit-content; margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.2); }
-@keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
-@media (max-width: 768px) { .portfolio-container { grid-template-columns: 1fr; gap: 16px; } .hero-card, .about-card, .projects-card, .contact-card { grid-column: span 1; } .doc-drawer { width: 100%; right: -100%; } }
+.drawer-body { flex-grow: 1; margin-top: 24px; color: var(--text-primary); line-height: 1.6; font-size: 0.95rem; }
+.drawer-body h4 { color: var(--neon-cyan); margin: 20px 0 8px 0; }
+.drawer-body ul { margin: 0; padding-left: 20px; color: var(--text-muted); }
+
+.drawer-close-btn {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    text-align: center;
+    margin-top: auto;
+}
+.drawer-close-btn:hover { background: rgba(0,240,255,0.05); }
+
+.drawer-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop
 
 
