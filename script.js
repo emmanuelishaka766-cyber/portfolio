@@ -1,38 +1,46 @@
-// 1. Typewriter Effect Logic
-const phrases = ["I build beautiful interfaces.", "I create secure solutions.", "Welcome to my space."];
-let currentPhraseIndex = 0;
-let currentCharIndex = 0;
-const typewriterElement = document.getElementById("typewriter");
+// --- Premium Typewriter Implementation ---
+const terminalPhrases = ["systems designer.", "full-stack creator.", "problem solver."];
+let phraseIdx = 0;
+let charIdx = 0;
+let isDeleting = false;
+const targetElement = document.getElementById("typewriter");
 
-function type() {
-    if (currentCharIndex < phrases[currentPhraseIndex].length) {
-        typewriterElement.textContent += phrases[currentPhraseIndex].charAt(currentCharIndex);
-        currentCharIndex++;
-        setTimeout(type, 100);
+function runTypewriter() {
+    const currentPhrase = terminalPhrases[phraseIdx];
+    
+    if (!isDeleting) {
+        targetElement.textContent = currentPhrase.substring(0, charIdx + 1);
+        charIdx++;
+        
+        if (charIdx === currentPhrase.length) {
+            isDeleting = true;
+            setTimeout(runTypewriter, 2500);
+            return;
+        }
     } else {
-        setTimeout(erase, 2000);
+        targetElement.textContent = currentPhrase.substring(0, charIdx - 1);
+        charIdx--;
+        
+        if (charIdx === 0) {
+            isDeleting = false;
+            phraseIdx = (phraseIdx + 1) % terminalPhrases.length;
+        }
     }
+    
+    setTimeout(runTypewriter, isDeleting ? 40 : 80);
 }
 
-function erase() {
-    if (currentCharIndex > 0) {
-        typewriterElement.textContent = phrases[currentPhraseIndex].substring(0, currentCharIndex - 1);
-        currentCharIndex--;
-        setTimeout(erase, 50);
-    } else {
-        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-        setTimeout(type, 500);
-    }
-}
+document.addEventListener("DOMContentLoaded", () => setTimeout(runTypewriter, 1000));
 
-// Start typewriter on load
-document.addEventListener("DOMContentLoaded", () => setTimeout(type, 500));
-
-
-// 2. Secure Form Submission Logic
+// --- Secure Serverless Request Interceptor ---
 document.getElementById('my-contact-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    const btn = e.target.querySelector('.submit-btn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span>Processing Payload...</span>';
+    btn.disabled = true;
+
     const data = {
         name: document.getElementById('form-name').value,
         email: document.getElementById('form-email').value,
@@ -47,13 +55,16 @@ document.getElementById('my-contact-form').addEventListener('submit', async (e) 
         });
 
         if (response.ok) {
-            alert('Message sent safely and securely!');
+            alert('Transmission Success. Data routed safely.');
             document.getElementById('my-contact-form').reset();
         } else {
-            alert('Something went wrong. Please try again.');
+            alert('Error dispatching pipeline. Please retry.');
         }
     } catch (error) {
-        alert('Error connecting to the server.');
+        alert('Could not establish network route.');
+    } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
     }
 });
 
