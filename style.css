@@ -1,113 +1,257 @@
-/* Dark, Tech-Forward Theme */
+/* --- Global Reset & Variables --- */
+:root {
+    --bg-dark: #030712;
+    --card-bg: rgba(17, 24, 39, 0.7);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(56, 189, 248, 0.4);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --accent: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    --spotify-green: #1ED760;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #0b0f19;
-    color: #f3f4f6;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
     margin: 0;
-    padding: 40px 20px;
+    padding: 60px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     box-sizing: border-box;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 40%);
 }
 
-/* Bento Grid Setup */
-.bento-grid {
+/* --- Spotify-Style Brand Heading --- */
+.brand-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.04em;
+    display: flex;
+    align-items: center;
+}
+
+.spotify-e {
+    color: var(--spotify-green);
+    display: inline-block;
+    transform: rotate(-10deg); /* Slanted upward wave look */
+    font-weight: 800;
+    padding-right: 2px;
+    text-shadow: 0 0 20px rgba(30, 215, 96, 0.5);
+}
+
+/* --- Bento Grid Layout --- */
+.portfolio-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 900px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    max-width: 1100px;
     width: 100%;
 }
 
-.bento-item {
-    background-color: #111827;
-    border: 1px solid #1f2937;
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.bento-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 32px;
+    backdrop-filter: blur(12px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Specific Block Layouts */
-.profile-card {
-    grid-column: span 2;
-    border-left: 4px solid #38bdf8; /* Neon blue accent line */
+.bento-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(56, 189, 248, 0.05);
 }
 
-.profile-card h1 {
-    margin: 0 0 10px 0;
-    font-size: 2.5rem;
-    color: #ffffff;
-}
+.hero-card { grid-column: span 6; }
+.about-card { grid-column: span 3; }
+.projects-card { grid-column: span 3; }
+.contact-card { grid-column: span 6; }
 
-.about-card h3, .contact-card h3 {
-    margin-top: 0;
-    color: #38bdf8;
-}
-
-/* Neon Typewriter Text Styling */
-.typewriter-text {
-    font-family: 'Courier New', Courier, monospace;
-    color: #38bdf8;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-right: 2px solid #38bdf8;
-    white-space: nowrap;
-    overflow: hidden;
+/* --- Component Styles --- */
+.badge {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
     width: fit-content;
+    margin-bottom: 20px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
-/* Contact Form Elements */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.form-input, .form-textarea {
-    background-color: #1f2937;
-    border: 1px solid #374151;
+.hero-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
     color: #ffffff;
-    padding: 12px;
+}
+
+.text-glow {
+    color: var(--accent);
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.typewriter-container {
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.terminal-prompt { color: var(--accent); margin-right: 8px; }
+
+.typewriter-text {
+    border-right: 2px solid var(--accent);
+    animation: blink 0.75s step-end infinite;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.card-icon { font-size: 1.25rem; }
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    font-size: 0.95rem;
+}
+
+.card-subtitle { color: var(--text-secondary); margin: 0 0 32px 0; font-size: 0.95rem; }
+
+/* --- Tags --- */
+.tech-stack { display: flex; flex-wrap: wrap; gap: 8px; }
+.tech-tag {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    padding: 6px 12px;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+/* --- Project Block --- */
+.project-preview {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.project-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: #ffffff; }
+.project-info p { margin: 0; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+.project-status {
+    font-size: 0.75rem;
+    background: var(--border-color);
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+}
+
+/* --- Floating Label Inputs --- */
+.contact-form { display: flex; flex-direction: column; gap: 24px; }
+.input-group { position: relative; width: 100%; }
+
+.form-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: var(--font-sans);
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
 }
 
-.form-input:focus, .form-textarea:focus {
-    border-color: #38bdf8;
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-input:focus { border-color: var(--accent); background: rgba(0, 0, 0, 0.4); }
+.form-label {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    color: var(--text-secondary);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
 }
 
-.btn-primary {
-    background-color: #38bdf8;
-    color: #0b0f19;
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown) ~ .form-label {
+    top: -10px;
+    left: 12px;
+    font-size: 0.8rem;
+    background: #030712;
+    padding: 2px 8px;
+    color: var(--accent);
+    border-radius: 4px;
+}
+
+/* --- Premium Buttons --- */
+.submit-btn {
+    background: #ffffff;
+    color: var(--bg-dark);
     border: none;
-    padding: 14px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    font-family: var(--font-sans);
+    transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-    background-color: #0ea5e9;
+.submit-btn:hover {
+    background: var(--accent);
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
 }
 
-.btn-primary:active {
-    transform: scale(0.98);
+.btn-arrow { transition: transform 0.3s ease; }
+.submit-btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* --- Animations --- */
+@keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
+
+@media (max-width: 768px) {
+    .portfolio-container { grid-template-columns: 1fr; gap: 16px; }
+    .hero-card, .about-card, .projects-card, .contact-card { grid-column: span 1; }
+    .brand-title { font-size: 2.5rem; }
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 650px) {
-    .bento-grid {
-        grid-template-columns: 1fr;
-    }
-    .profile-card {
-        grid-column: span 1;
-    }
-}
 
