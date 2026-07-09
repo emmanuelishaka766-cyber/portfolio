@@ -11,6 +11,8 @@
 </head>
 <body>
 
+    <div class="bg-grid-animation"></div>
+
     <main class="portfolio-container">
         <section class="bento-card hero-card">
             <div class="badge">Available for Work</div>
@@ -26,19 +28,20 @@
         <section class="bento-card about-card">
             <div class="card-header">
                 <span class="card-icon">✦</span>
-                <h2>About</h2>
+                <h2>About & Skills</h2>
             </div>
-            <p class="card-text">Specializing in building ultra-secure, highly performant web architectures. Focused on clean code structures, seamless user interfaces, and robust backend integrations.</p>
+            <p class="card-text">Click any modern engineering layer below to inspect documentation paths and architectures.</p>
+            
             <div class="tech-stack">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Serverless APIs</span>
-                <span class="tech-tag">Git & GitHub</span>
+                <button class="tech-tag" onclick="openDrawer('html5')">HTML5</button>
+                <button class="tech-tag" onclick="openDrawer('css3')">CSS3</button>
+                <button class="tech-tag" onclick="openDrawer('javascript')">JavaScript</button>
+                <button class="tech-tag" onclick="openDrawer('apis')">Serverless APIs</button>
+                <button class="tech-tag" onclick="openDrawer('git')">Git & GitHub</button>
             </div>
         </section>
 
-        <section class="bento-card projects-card">
+        <section class="bento-card projects-card" onclick="openDrawer('project')">
             <div class="card-header">
                 <span class="card-icon">🛠️</span>
                 <h2>Featured Project</h2>
@@ -48,7 +51,7 @@
                     <h3>Serverless Messaging System</h3>
                     <p>A secure contact handler utilizing independent API endpoints to process user data without external dependencies.</p>
                 </div>
-                <div class="project-status">Active</div>
+                <div class="project-status">Inspect System</div>
             </div>
         </section>
 
@@ -80,7 +83,18 @@
         </section>
     </main>
 
+    <div id="doc-drawer" class="doc-drawer">
+        <div class="drawer-header">
+            <h2 id="drawer-title">Documentation</h2>
+            <button class="close-btn" onclick="closeDrawer()">×</button>
+        </div>
+        <div class="drawer-body" id="drawer-content">
+            </div>
+    </div>
+    <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
+
 
