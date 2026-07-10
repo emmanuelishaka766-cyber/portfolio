@@ -3,117 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMORA | Systems Architect</title>
+    <title>EMORA | Step-by-Step Developer Core</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="code-stream-bg">
-        <div class="code-column-track">
-            <span>import os, sys, time &nbsp;&nbsp;&nbsp;&nbsp; const key = 0x71 &nbsp;&nbsp;&nbsp;&nbsp; while True: loop() &nbsp;&nbsp;&nbsp;&nbsp; return True; &nbsp;&nbsp;&nbsp;&nbsp; fn async_process() { &nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>import os, sys, time &nbsp;&nbsp;&nbsp;&nbsp; const key = 0x71 &nbsp;&nbsp;&nbsp;&nbsp; while True: loop() &nbsp;&nbsp;&nbsp;&nbsp; return True; &nbsp;&nbsp;&nbsp;&nbsp; fn async_process() { &nbsp;&nbsp;&nbsp;&nbsp;</span>
-        </div>
-        <div class="code-column-track class-delayed">
-            <span>while True: loop() &nbsp;&nbsp;&nbsp;&nbsp; return True; &nbsp;&nbsp;&nbsp;&nbsp; fn async_process() { &nbsp;&nbsp;&nbsp;&nbsp; import os, sys, time &nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>while True: loop() &nbsp;&nbsp;&nbsp;&nbsp; return True; &nbsp;&nbsp;&nbsp;&nbsp; fn async_process() { &nbsp;&nbsp;&nbsp;&nbsp; import os, sys, time &nbsp;&nbsp;&nbsp;&nbsp;</span>
-        </div>
-        <div class="code-column-track">
-            <span>const key = 0x71 &nbsp;&nbsp;&nbsp;&nbsp; fn async_process() { &nbsp;&nbsp;&nbsp;&nbsp; import os, sys, time &nbsp;&nbsp;&nbsp;&nbsp; while True: loop() &nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>const key = 0x71 &nbsp;&nbsp;&nbsp;&nbsp; fn async_process() { &nbsp;&nbsp;&nbsp;&nbsp; import os, sys, time &nbsp;&nbsp;&nbsp;&nbsp; while True: loop() &nbsp;&nbsp;&nbsp;&nbsp;</span>
-        </div>
-    </div>
-
     <header class="site-header">
         <div class="header-container">
-            <div class="logo-area">
-                <div class="matrix-wave">
-                    <span></span><span></span><span></span>
-                </div>
+            <div class="logo-area" onclick="location.reload();" style="cursor:pointer;">
                 <h1 class="brand-name">MORA</h1>
+                <span class="sub-brand">/ GUIDE-HUB</span>
             </div>
             <nav class="nav-links">
-                <a href="#about" onclick="openDrawer('html5'); return false;">About</a>
-                <a href="#projects" onclick="openDrawer('project'); return false;">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact" class="nav-contact-btn">Contact</a>
+                <a href="#about" onclick="showTrack('about'); return false;">About Me</a>
+                <a href="#projects" onclick="showTrack('projects'); return false;">Projects</a>
+                <a href="#skills" onclick="showTrack('skills'); return false;">Skills Setup</a>
+                <a href="#contact" class="nav-contact-btn">Secure Uplink</a>
             </nav>
         </div>
     </header>
 
-    <main class="portfolio-container">
+    <div class="split-layout-wrapper">
         
-        <section class="bento-card hero-card">
-            <div class="badge">Available for Work</div>
-            <h2 class="hero-title">Building the Future <span class="dim-text">with Precision.</span></h2>
-            <p class="terminal-container">
-                <span class="prompt">$</span> <span id="typewriter" class="typewriter"></span>
-            </p>
-            <button class="view-work-btn" onclick="openDrawer('project')">View My Work</button>
-        </section>
-
-        <section class="bento-card messaging-card">
-            <h3>Distributed Messaging Core</h3>
-            <p class="card-desc">A secure serverless messaging engine with decoupled endpoints built using clean coding architecture.</p>
-            <div class="action-row">
-                <button class="btn btn-outline" onclick="openDrawer('project')">Inspect Blueprint</button>
-                <button class="btn btn-outline" onclick="openDrawer('apis')">System Logs</button>
-                <div class="operation-badge">OPERATION PROJECT</div>
-            </div>
-        </section>
-
-        <section id="skills" class="bento-card skills-card">
-            <h3>About & Skills</h3>
-            <p class="section-tag">[ Clickable Tech Layers ]</p>
-            <div class="tech-grid">
-                <button class="tech-pill" onclick="openDrawer('html5')">HTML5</button>
-                <button class="tech-pill" onclick="openDrawer('css3')">CSS3</button>
-                <button class="tech-pill" onclick="openDrawer('javascript')">JavaScript</button>
-                <button class="tech-pill" onclick="openDrawer('apis')">Serverless APIs</button>
-                <button class="tech-pill" onclick="openDrawer('git')">Git & GitHub</button>
-                <button class="tech-pill" onclick="openDrawer('react')">React</button>
-            </div>
-        </section>
-
-        <section id="contact" class="bento-card secure-channel-card">
-            <h3>Secure Channel</h3>
+        <main class="primary-content-column">
             
-            <div class="contact-comms-meta">
-                <p><strong>Uplink:</strong> <a href="tel:+16474057498">647-405-7498</a></p>
-                <p><strong>Email:</strong> <a href="mailto:emmanuelishaka766@gmail.com">emmanuelishaka766@gmail.com</a></p>
-            </div>
+            <article id="tutorial-view-deck" class="instruction-guide-card">
+                <h2 class="guide-main-title">How to Deploy Production Systems</h2>
+                <p class="guide-intro-text">Welcome to the central tracking array. Click on any method or skill layer in the navigation index to view interactive step-by-step visual execution paths.</p>
+                
+                <div class="step-by-step-timeline">
+                    <div class="timeline-step">
+                        <div class="step-number-badge">Step 1</div>
+                        <div class="step-details">
+                            <h3>Initialize System Blueprint</h3>
+                            <p>Map layout elements using structural semantic components to maximize loading performance across client nodes.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number-badge">Step 2</div>
+                        <div class="step-details">
+                            <h3>Optimize Code Layer Integration</h3>
+                            <p>Inject optimized scripts alongside tailored style matrices to establish standard interactive parameters.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-            <form id="my-contact-form" class="secure-form">
-                <input type="text" id="form-name" placeholder="Name" required class="matrix-input">
-                <input type="email" id="form-email" placeholder="Email Address" required class="matrix-input">
-                <textarea id="form-message" placeholder="Message" rows="3" required class="matrix-input matrix-textarea"></textarea>
-                <button type="submit" class="transmit-btn">Transmit Payload</button>
-            </form>
-        </section>
-    </main>
+            <section id="contact" class="instruction-guide-card contact-anchor-box">
+                <h2 class="guide-main-title">Establish Communications Channel</h2>
+                <div class="contact-comms-meta">
+                    <p><strong>Uplink:</strong> <a href="tel:+16474057498">647-405-7498</a> &nbsp;|&nbsp; <strong>Email:</strong> <a href="mailto:emmanuelishaka766@gmail.com">emmanuelishaka766@gmail.com</a></p>
+                </div>
+                <form id="my-contact-form" class="secure-form">
+                    <div class="input-twin-row">
+                        <input type="text" id="form-name" placeholder="Your Name" required class="matrix-input">
+                        <input type="email" id="form-email" placeholder="Your Email Address" required class="matrix-input">
+                    </div>
+                    <textarea id="form-message" placeholder="Type your payload or request details here..." rows="3" required class="matrix-input"></textarea>
+                    <button type="submit" class="transmit-btn">Transmit Payload</button>
+                </form>
+            </section>
+        </main>
 
-    <div id="doc-drawer" class="doc-drawer">
-        <div class="drawer-header">
-            <div>
-                <span class="drawer-meta">DOCUMENTATION:</span>
-                <h2 id="drawer-title">HTML5 ENGINE</h2>
+        <aside class="sidebar-index-column">
+            <div class="index-sticky-box">
+                <h4 class="index-section-title">GUIDE DIRECTORY</h4>
+                <ul class="index-links-list">
+                    <li><a href="#about" onclick="showTrack('about'); return false;">identity_profile.md</a></li>
+                    <li><a href="#projects" onclick="showTrack('projects'); return false;">web_app_dashboard.sys</a></li>
+                    <li><a href="#skills" onclick="showTrack('skills'); return false;">core_stack_parameters.json</a></li>
+                </ul>
+                
+                <h4 class="index-section-title" style="margin-top: 32px;">SYSTEM METRICS</h4>
+                <div class="sidebar-metrics-log">
+                    <p>Status: <span>ONLINE</span></p>
+                    <p>Uplink Node: <span>Active</span></p>
+                </div>
             </div>
-            <button class="close-icon" onclick="closeDrawer()">&times;</button>
-        </div>
-        <div class="drawer-body" id="drawer-content"></div>
-        <button class="drawer-close-btn" onclick="closeDrawer()">close</button>
+        </aside>
+        
     </div>
-    <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()"></div>
 
     <footer class="site-footer">
         <div class="footer-container">
-            <p>&copy; 2026 EMORA Portfolio Layer. All code assets securely tracked.</p>
-            <div class="footer-meta">
-                <span>Latency: 14ms</span>
-                <span>System: Online</span>
-            </div>
+            <p>&copy; 2026 EMORA Core Index. All assets structuralized cleanly.</p>
         </div>
     </footer>
 
