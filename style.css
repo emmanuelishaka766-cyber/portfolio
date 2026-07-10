@@ -37,7 +37,7 @@ body {
     height: 80px;
     background: rgba(10, 1, 2, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-base);
+    border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -156,4 +156,46 @@ body {
 .directory-link:hover .dir-icon { color: var(--neon-red); opacity: 1; }
 
 .terminal-stats-widget { background: #0c0203; border: 1px solid var(--border-base); border-radius: 8px; padding: 20px; font-family: var(--font-mono); font-size: 0.8rem; border-color: rgba(255, 42, 67, 0.06); }
-.widget-
+.widget-header { color: var(--text-muted); border-bottom: 1px solid var(--border-base); padding-bottom: 8px; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; }
+.widget-line { margin: 6px 0; color: var(--text-muted); }
+.widget-line span { color: var(--neon-white); font-weight: 700; }
+/* 🔴 Red Monitoring Pulse Dot */
+.widget-pulse-line { display: flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--neon-red); font-weight: 700; font-size: 0.75rem; }
+.pulse-circle { width: 6px; height: 6px; background: var(--neon-red); border-radius: 50%; animation: redBlinker 1s step-start infinite; box-shadow: 0 0 10px var(--neon-red); }
+@keyframes redBlinker { 50% { opacity: 0; } }
+
+/* --- SALES REVENUE CONTACT FORM --- */
+.contact-anchor-box { margin-top: 24px; padding: 48px; }
+.contact-anchor-box:hover { border-color: var(--border-hover); }
+.direct-contact-bar { display: flex; gap: 24px; margin-bottom: 32px; font-size: 0.8rem; background: rgba(255, 255, 255, 0.01); padding: 20px; border-radius: 6px; border: 1px solid var(--border-base); flex-wrap: wrap; font-family: var(--font-mono); letter-spacing: 0.03em; color: var(--text-muted); }
+.direct-contact-bar a { color: var(--neon-red); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+.direct-contact-bar a:hover { color: rgba(255, 255, 255, 0.6); text-decoration: underline; }
+
+.secure-form { display: flex; flex-direction: column; gap: 16px; }
+.input-twin-row { display: flex; gap: 16px; }
+.matrix-input { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-base); border-radius: 6px; padding: 18px; color: var(--neon-white); font-family: var(--font-sans); font-size: 0.95rem; outline: none; width: 100%; box-sizing: border-box; transition: border-color 0.2s; }
+.matrix-input:focus { border-color: rgba(255, 42, 67, 0.4); background: rgba(10, 1, 2, 0.6); }
+textarea.matrix-input { line-height: 1.6; }
+
+/* 🔴 Red Active Submit Button */
+.transmit-btn { background: var(--neon-red); color: var(--bg-main); border: none; padding: 18px 32px; font-family: var(--font-mono); font-weight: 700; font-size: 0.9rem; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 10px 25px rgba(255, 42, 67, 0.2); }
+.transmit-btn:hover { background: rgba(255, 255, 255, 0.9); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); }
+.arrow-icon { transition: transform 0.2s ease; fill: none; stroke: currentColor; }
+.transmit-btn:hover .arrow-icon { transform: translateX(4px); stroke: var(--bg-main); }
+
+/* --- FOOTER RENDER FRAME --- */
+.site-footer { width: 100%; border-top: 1px solid var(--border-base); padding: 24px 0; margin-top: auto; display: flex; justify-content: center; background: rgba(10, 1, 2, 0.9); }
+.footer-container { max-width: 1200px; width: 100%; padding: 0 32px; color: var(--text-muted); font-size: 0.8rem; box-sizing: border-box; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+/* 🔴 Muted red status bar dot */
+.footer-container p::before { content: '●'; color: var(--neon-red-dim); margin-right: 8px; }
+
+/* --- RESPONSIVE LAYOUT OPTIMIZATIONS --- */
+@media (max-width: 860px) {
+    .main-pitch-title { font-size: 2.3rem; }
+    .nav-links { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .split-layout-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .sidebar-index-column { order: -1; }
+    .input-twin-row { flex-direction: column; gap: 16px; }
+    .service-card, .instruction-guide-card, .contact-anchor-box { padding: 32px; }
+}
