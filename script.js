@@ -1,38 +1,42 @@
-// --- Pinterest Layout Interactive Content Engine Mapping ---
+// --- Interactive Pinterest Panel Registry Data ---
 const techRegistryData = {
     about: {
         title: "ABOUT ME",
         html: `
-            <p>I am a Systems Architect and Creative Engineer focusing on the intersection of highly clean execution layer logic and visually compelling digital interfaces.</p>
-            <p>By blending full-stack software development workflows with optimized responsive asset delivery, I build high-performance products that engage audiences.</p>
-            <div class="drawer-gallery-grid">
-                <div class="drawer-img-placeholder">[ Photo/Avatar Placeholder ]</div>
-                <div class="drawer-img-placeholder">[ Workspace Node ]</div>
+            <p>I design and build intuitive, high-performance web applications that make people's lives simpler.</p>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=500&q=80" alt="Workspace Design">
+                </div>
+                <p>Focused on clean execution, modern layout systems, and responsive user experiences.</p>
             </div>
         `
     },
     projects: {
-        title: "PROJECT PORTFOLIO",
+        title: "PROJECT GALLERY",
         html: `
-            <p>Review the active collection of systems, applications, and visual platforms built natively using optimized coding architectures.</p>
-            <h4>Production Deliverables</h4>
-            <div class="drawer-gallery-grid">
-                <div class="drawer-img-placeholder tall">[ Project Screenshot 1 ]</div>
-                <div class="drawer-img-placeholder">[ Interface Detail ]</div>
-                <div class="drawer-img-placeholder">[ Code Architecture Blueprint ]</div>
+            <p>Click on any component blueprint to view live documentation tracking.</p>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80" alt="Web App Dashboard Code">
+                </div>
+                <p><strong>Dashboard Core Engine:</strong> A full-stack data system managing web transactions cleanly.</p>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80" alt="UI Design System">
+                </div>
+                <p><strong>Interface Systems:</strong> Custom responsive layout architectures mimicking high-end UI blocks.</p>
             </div>
         `
     },
     skills: {
-        title: "TECHNICAL CAPABILITIES",
+        title: "CORE SKILLS",
         html: `
-            <p>Comprehensive tracking indices mapping proficiency levels across modern frontend design arrays and performance tools.</p>
-            <h4>Core Architecture Layers</h4>
+            <p>Meticulous system development across multiple technical interfaces:</p>
             <ul>
-                <li><strong>HTML5 / Semantic DOM Structuring</strong> - Mastery</li>
-                <li><strong>CSS3 / Grid & Masonry Matrices</strong> - Advanced</li>
-                <li><strong>JavaScript / Asynchronous Request Handling</strong> - Advanced</li>
-                <li><strong>React Component State Optimization</strong> - Intermediate</li>
+                <li><strong>HTML5 / CSS3 Layouts:</strong> Creating fluid grids, clean typography tracking, and flexbox matrices.</li>
+                <li><strong>JavaScript Core:</strong> Intercepting user events and rendering asynchronous components.</li>
+                <li><strong>Serverless Architecture:</strong> Processing API endpoints and routing payload data dynamically.</li>
             </ul>
         `
     }
@@ -48,41 +52,7 @@ function openDrawer(key) {
 }
 
 function closeDrawer() {
+    document.getElementById('doc-drawer').classList.remove('remove');
     document.getElementById('doc-drawer').classList.remove('active');
     document.getElementById('drawer-overlay').classList.remove('active');
 }
-
-// --- Dynamic Secure Form Gateway Handling ---
-document.getElementById('my-contact-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const triggerBtn = e.target.querySelector('.transmit-btn');
-    triggerBtn.textContent = 'Transmitting...';
-    triggerBtn.disabled = true;
-
-    const payload = {
-        name: document.getElementById('form-name').value,
-        email: document.getElementById('form-email').value,
-        message: document.getElementById('form-message').value
-    };
-
-    try {
-        const networkResponse = await fetch('/api/send', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-
-        if (networkResponse.ok) {
-            alert('Transmission Complete. Data packet processed successfully.');
-            document.getElementById('my-contact-form').reset();
-        } else {
-            alert('Transmission error. Server node rejected the packet structure.');
-        }
-    } catch (err) {
-        alert('Network routing failed. Check active uplink state.');
-    } {
-        triggerBtn.textContent = 'Transmit Payload';
-        triggerBtn.disabled = false;
-    }
-});
-
