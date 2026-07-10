@@ -1,7 +1,8 @@
-/* --- Global Variables --- */
+/* --- Global Configuration Elements --- */
 :root {
     --bg-main: #020b14;
-    --card-bg: rgba(9, 21, 36, 0.75);
+    --card-bg: #060f1a;
+    --border-color: #102238;
     --neon-cyan: #00f0ff;
     --text-primary: #f1f5f9;
     --text-muted: #64748b;
@@ -16,98 +17,136 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- Fixed Transparent Top Nav --- */
+/* --- FIXED GLOBAL RENDER HEADER --- */
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
-    background: rgba(2, 11, 20, 0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+    height: 70px;
+    background: #020b14;
+    border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .header-container {
-    max-width: 1200px;
+    max-width: 1140px;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
 }
-.brand-name { font-size: 1.6rem; font-weight: 700; color: #ffffff; margin: 0; }
-.nav-links a { color: var(--text-primary); text-decoration: none; margin-left: 24px; font-size: 0.95rem; }
+.logo-area { display: flex; align-items: baseline; gap: 6px; }
+.brand-name { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin: 0; letter-spacing: 0.05em; }
+.sub-brand { font-family: var(--font-mono); font-size: 0.8rem; color: var(--neon-cyan); }
+.nav-links a { color: var(--text-primary); text-decoration: none; margin-left: 20px; font-size: 0.9rem; font-weight: 500; }
 .nav-links a:hover { color: var(--neon-cyan); }
+.nav-contact-btn { border: 1px solid var(--neon-cyan); padding: 6px 14px; border-radius: 4px; color: var(--neon-cyan) !important; }
 
-/* --- 🌟 CRITICAL FIX: TRUE PINTEREST MASONRY GRID --- */
-.masonry-grid-container {
-    display: block;
-    column-count: 2; /* This forces 2 side-by-side columns on desktop views */
-    column-gap: 24px;
-    max-width: 1200px;
+/* --- TWO-COLUMN WRAPPER --- */
+.split-layout-wrapper {
+    max-width: 1140px;
     width: 100%;
-    margin: 120px auto 60px auto;
-    padding: 0 40px;
+    margin: 110px auto 40px auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 300px; /* Left content track, right sidebar list */
+    gap: 32px;
     box-sizing: border-box;
+    flex-grow: 1;
 }
 
-.masonry-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(0, 240, 255, 0.1);
-    border-radius: 16px;
-    margin-bottom: 24px;
-    break-inside: avoid; /* Prevents cards from breaking awkwardly in half */
-    padding: 32px;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-.masonry-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--neon-cyan);
-}
-
-/* --- Inline Form Configs --- */
-.secure-form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
-.matrix-input { background: rgba(0,0,0,0.3); border: 1px solid #142437; border-radius: 8px; padding: 14px; color: #white; outline: none; }
-.transmit-btn { background: #ffffff; border: none; padding: 14px; font-weight: bold; border-radius: 8px; cursor: pointer; }
-
-/* --- Slide-Out Interactive Panel --- */
-.doc-drawer { position: fixed; top: 0; right: -500px; width: 460px; height: 100vh; background: #030c16; border-left: 2px solid var(--neon-cyan); z-index: 2000; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; transition: right 0.4s ease; }
-.doc-drawer.active { right: 0; }
-.drawer-body { flex-grow: 1; margin-top: 24px; overflow-y: auto; color: #94a3b8; }
-.drawer-close-btn { background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 12px; border-radius: 6px; cursor: pointer; margin-top: auto; }
-.drawer-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1999; display: none; }
-.drawer-overlay.active { display: block; }
-
-/* --- 🖼️ NEW VISUAL GALLERY IMAGES STYLING --- */
-.project-gallery {
+/* --- LEFT COLUMN TRACK STYLING --- */
+.primary-content-column {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 20px;
+    gap: 24px;
 }
-.gallery-item {
-    width: 100%;
+.instruction-guide-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
+    padding: 40px;
 }
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+.guide-main-title { margin: 0 0 16px 0; font-size: 2rem; font-weight: 700; color: #ffffff; letter-spacing: -0.02em; }
+.guide-intro-text { color: #94a3b8; font-size: 1.05rem; line-height: 1.6; margin: 0 0 32px 0; }
 
-/* --- Mobile Breakpoints --- */
-@media (max-width: 768px) {
-    .masonry-grid-container { column-count: 1; padding: 0 20px; }
-    .doc-drawer { width: 100%; right: -100%; }
+/* --- STEP-BY-STEP IMAGE & TIMELINE MATRIX --- */
+.step-by-step-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.timeline-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(16, 34, 56, 0.5);
+    padding-bottom: 24px;
+}
+.timeline-step:last-child { border-bottom: none; padding-bottom: 0; }
+.step-number-badge {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid var(--neon-cyan);
+    padding: 6px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+.step-details h3 { margin: 0 0 8px 0; font-size: 1.25rem; color: #ffffff; }
+.step-details p { margin: 0 0 16px 0; color: #94a3b8; line-height: 1.6; font-size: 0.95rem; }
+
+/* Tutorial Step Images configuration matching site architecture */
+.step-media-box {
+    width: 100%;
+    max-height: 320px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    margin-top: 12px;
+}
+.step-media-box img { width: 100%; height: auto; display: block; }
+
+/* --- RIGHT COLUMN TRACK INDEX STYLING --- */
+.sidebar-index-column { box-sizing: border-box; }
+.index-sticky-box { position: sticky; top: 110px; }
+.index-section-title { margin: 0 0 12px 0; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; }
+.index-links-list { list-style: none; padding: 0; margin: 0; }
+.index-links-list li { margin-bottom: 10px; }
+.index-links-list a { color: #94a3b8; text-decoration: none; font-size: 0.95rem; display: block; padding: 6px 0; transition: color 0.2s; }
+.index-links-list a:hover { color: var(--neon-cyan); }
+.sidebar-metrics-log p { margin: 6px 0; font-family: var(--font-mono); font-size: 0.8rem; color: #51647a; }
+.sidebar-metrics-log span { color: var(--neon-cyan); }
+
+/* --- FORM & CONTACT MODULE INTEGRATION --- */
+.contact-anchor-box { margin-top: 12px; }
+.contact-comms-meta { margin-bottom: 24px; font-size: 0.9rem; color: #94a3b8; }
+.contact-comms-meta a { color: var(--neon-cyan); text-decoration: none; font-weight: 500; }
+.secure-form { display: flex; flex-direction: column; gap: 14px; }
+.input-twin-row { display: flex; gap: 14px; }
+.matrix-input { background: #020b14; border: 1px solid var(--border-color); border-radius: 4px; padding: 14px; color: #ffffff; font-family: var(--font-sans); outline: none; font-size: 0.9rem; width: 100%; box-sizing: border-box; }
+.matrix-input:focus { border-color: var(--neon-cyan); }
+.transmit-btn { background: #ffffff; color: #020b14; border: none; padding: 14px; font-weight: 600; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+.transmit-btn:hover { background: #e2e8f0; }
+
+/* --- FOOTER FRAME --- */
+.site-footer { width: 100%; border-top: 1px solid var(--border-color); padding: 24px 0; margin-top: auto; display: flex; justify-content: center; background: #020b14; }
+.footer-container { max-width: 1140px; width: 100%; padding: 0 24px; color: var(--text-muted); font-size: 0.85rem; box-sizing: border-box; }
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 860px) {
+    .split-layout-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .sidebar-index-column { order: -1; } /* Pushes guide directory list to top view on mobile */
+    .input-twin-row { flex-direction: column; gap: 14px; }
 }
