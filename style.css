@@ -248,3 +248,22 @@ h3 { margin: 0 0 16px 0; font-size: 1.5rem; color: #ffffff; letter-spacing: -0.0
     .action-row { flex-direction: column; gap: 12px; }
     .operation-badge { margin: 0 auto; }
 }
+.contact-comms-meta {
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+.contact-comms-meta p {
+    margin: 4px 0;
+    color: var(--text-muted);
+}
+.contact-comms-meta a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.contact-comms-meta a:hover {
+    color: var(--neon-green);
+}
+
